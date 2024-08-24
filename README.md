@@ -10,7 +10,7 @@ The core of the project involves the use of a Python function, `analyze_dataset`
 
 - **Jupyter Notebooks**: Each notebook contains initial data processing steps such as importing the dataset, exploring basic statistics using `head()` and `describe()`, and performing necessary data cleaning (e.g., dropping irrelevant columns). After these steps, the `analyze_dataset` function is called to create detailed visualizations.
 
-- **analyze_dataset.py**: This script contains the `analyze_dataset` function, which is the backbone of the project. It handles time series analysis, histogram plots, hearmap, correlation analysis, scatter plots, bubble charts and anomaly detection.
+- **analyze_dataset.py**: This script contains the `analyze_dataset` function, which is the backbone of the project. It handles time series analysis, histogram plots, heatmap, correlation analysis, scatter plots, bubble charts and anomaly detection.
 
 ## Libraries Used
 
