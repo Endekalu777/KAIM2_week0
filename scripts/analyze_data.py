@@ -4,22 +4,28 @@ import seaborn as sns
 from scipy.stats import zscore
 
 def analyze_dataset(df, z_threshold = 3.5):
+
     # Change the time stamp to dateformat
     df['Timestamp'] = pd.to_datetime(df['Timestamp'])
     df['Year'] = df['Timestamp'].dt.year
     df['Month'] = df['Timestamp'].dt.month
     df['Day'] = df['Timestamp'].dt.day
     df['Hour'] = df['Timestamp'].dt.hour
+
    # Re assign the value of GHI vales for negative values and replace the the values with 0
     df['GHI'] = df['GHI'].apply(lambda x : 0 if x < 0 else x)
     df['DNI'] = df['DNI'].apply(lambda x : 0 if x < 0 else x)
     df['DHI'] = df['DHI'].apply(lambda x : 0 if x < 0 else x)	
+
     # Time series analysis using line graphs
     df.set_index('Timestamp', inplace=True)
+
     # Resample data by month to observe monthly patterns
     monthly_data = df.resample('ME').mean()
+
     # Resample data by day to observe daily trends
     daily_data = df.resample('D').mean()
+
     # Resample data by hour to observe hourly trends
     hourly_data = df.resample('h').mean()
 
@@ -120,6 +126,7 @@ def analyze_dataset(df, z_threshold = 3.5):
 
     # Calculating Z-score to identify to flag datapoints
     z_scores = df[['GHI', 'DNI', 'DHI']].apply(zscore)
+
     # Add Z-scores to DataFrame
     df['Z_GHI'] = z_scores['GHI']
     df['Z_DNI'] = z_scores['DNI']
@@ -133,7 +140,7 @@ def analyze_dataset(df, z_threshold = 3.5):
 
     # Bubble Charts
     df['RH_normalized'] = (df['RH'] - df['RH'].min()) / (df['RH'].max() - df['RH'].min())
-    bubble_size = df['RH_normalized'] * 100  # Adjust the multiplier for appropriate bubble size
+    bubble_size = df['RH_normalized'] * 100  
 
     # Create bubble chart with adjusted parameters
     plt.figure(figsize=(12, 8))
