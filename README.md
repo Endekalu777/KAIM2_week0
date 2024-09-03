@@ -71,12 +71,8 @@ pip install -r requirements.txt
 Alternatively, you can use Conda to install the project dependencies. Note that you will need to install each package individually. To do this, first ensure that you have activated your Conda environment, then use the following commands to install each required package:
 
 ```bash
-conda install package_name
-
-pandas
-matplotlib
-scipy
-seaborn
+conda install -c conda-forge package-name
+```
 
 ### Clone this package
 - To install the network_analysis package, follow these steps:
