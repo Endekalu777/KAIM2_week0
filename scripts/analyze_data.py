@@ -17,7 +17,7 @@ def analyze_dataset(df, z_threshold = 3.5):
     # Time series analysis using line graphs
     df.set_index('Timestamp', inplace=True)
     # Resample data by month to observe monthly patterns
-    monthly_data = df.resample('ME').mean()
+    monthly_data = df.resample('M').mean()
     # Resample data by day to observe daily trends
     daily_data = df.resample('D').mean()
     # Resample data by hour to observe hourly trends
