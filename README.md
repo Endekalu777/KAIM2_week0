@@ -4,109 +4,58 @@ This project focuses on analyzing solar radiation data across different regions,
 
 ## Project Overview
 
-The core of the project involves the use of a Python function, `analyze_dataset`, to automate the visualization and analysis of solar radiation data. This function is used to process and analyze data, generating insights and visualizations to support understanding and decision-making regarding solar radiation in the specified regions.
+The core of the project involves the use of a Python function, `analyze_dataset`, to automate the visualization and analysis of solar radiation data. This function is used across three Jupyter notebooks—Benin, Sierra Leone, and Togo—to generate insightful visualizations and detect anomalies in the data.
 
-## Installation
-
-### Creating a Virtual Environment
-
-#### Using Conda
-
-If you prefer Conda as your package manager:
-
-1. Open your terminal or command prompt.
-
-2. Navigate to your project directory.
-
-3. Run the following command to create a new Conda environment:
-
-    ```bash
-    conda create --name your_env_name python=3.12.5
-    ```
-    - Replace `your_env_name` with the desired name for your environment (e.g., `solar_analysis`) and `3.12.5` with your preferred Python version.
-
-4. Activate the environment:
-
-    ```bash
-    conda activate your_env_name
-    ```
-
-#### Using Virtualenv
-
-If you prefer using `venv`, Python's built-in virtual environment module:
-
-1. Open your terminal or command prompt.
-
-2. Navigate to your project directory.
-
-3. Run the following command to create a new virtual environment:
-
-    ```bash
-    python -m venv your_env_name
-    ```
-    - Replace `your_env_name` with the desired name for your environment.
-
-4. Activate the environment:
-
-    - On Windows:
-        ```bash
-        .\your_env_name\Scripts\activate
-        ```
-
-    - On macOS/Linux:
-        ```bash
-        source your_env_name/bin/activate
-        ```
-
-### Installing Dependencies with pip
-
-Once your virtual environment is created and activated, you can install packages and run your Python scripts within this isolated environment. Install the required dependencies using the following command:
-
-```bash
-pip install -r requirements.txt
+## Folder structure
+```
+├── app
+│   ├── dashboard.py         # Streamlit dashboard for visualizing analysis results
+│   ├── README.md            # Overview of the app functionality
+│   ├── requirements.txt     # Python dependencies for the app
+├── notebooks
+│   ├── benin_dataset.ipynb  # Solar radiation analysis for Benin
+│   ├── sierra_leone.ipynb   # Solar radiation analysis for Sierra Leone
+│   ├── togo_dataset.ipynb   # Solar radiation analysis for Togo
+├── scripts
+│   ├── __init__.py          # Makes the folder a package
+│   ├── analyze_data.py      # Core function for analysis and visualizations
+├── tests
+│   ├── __init__.py          # Makes the folder a package
+│   ├── test_analyze_data.py # Unit tests for analyze_data functions
+├── .gitignore               # Git ignore file
+├── README.md                # Main project documentation
+├── requirements.txt         # Project-level dependencies
 ```
 
-### Installing Dependencies with Conda
+## Files and Structure
 
-Alternatively, you can use Conda to install the project dependencies. Note that you will need to install each package individually. To do this, first ensure that you have activated your Conda environment, then use the following commands to install each required package:
+- **Jupyter Notebooks**: Each notebook contains initial data processing steps such as importing the dataset, exploring basic statistics using `head()` and `describe()`, and performing necessary data cleaning (e.g., dropping irrelevant columns). After these steps, the `analyze_dataset` function is called to create detailed visualizations.
 
-```bash
-conda install -c conda-forge package-name
-```
+- **analyze_dataset.py**: This script contains the `analyze_dataset` function, which is the backbone of the project. It handles time series analysis, histogram plots, heatmap, correlation analysis, scatter plots, bubble charts and anomaly detection.
 
-### Clone this package
-- To install the network_analysis package, follow these steps:
+## Libraries Used
 
-- Clone the repository:
-
-```bash
-git clone https://github.com/your-username/Solar_radiation_analysis.git
-```
-- Navigate to the project directory:
-
-```bash
-cd Solar_radiation_analysis
-Install the required dependencies:
-```
-
-```bash
-pip install -r requirements.txt
-```
+- **Pandas**: For data manipulation and analysis.
+- **Matplotlib**: For creating static, animated, and interactive visualizations.
+- **Seaborn**: For statistical data visualization.
+- **SciPy**: For scientific and technical computing, specifically the `zscore` function from `scipy.stats`.
 
 ## Usage Instructions
 
-Once the dependencies are installed, you can run the analysis notebooks by launching Jupyter Notebook or JupyterLab:
+To run the analysis:
 
-```bash
-jupyter notebook
-```
+1. **Load the Dataset**: Import the dataset in any of the Jupyter notebooks.
+2. **Preprocess the Data**: Use functions like `head()` and `describe()` to explore the data and clean it as needed.
+3. **Run the Analysis**: Call the `analyze_dataset` function to generate visualizations and perform the analysis.
 
-## Contributions
-Contributions are welcome! If you find any issues or have suggestions for improvement, feel free to create a pull request or open an issue.
+## Key Visualizations
+
+- **Monthly, Daily, and Hourly Patterns**: Line graphs showing trends in GHI, DNI, DHI, and Tamb.
+- **Impact of Cleaning on Sensors**: Line graphs comparing sensor readings with and without cleaning applied.
+- **Correlation Analysis**: Heatmaps to explore correlations between variables.
+- **Scatter Matrices**: Pair plots to examine relationships between wind conditions and solar irradiance.
+- **Bubble Charts**: Visualizations representing relationships between GHI, Tamb, and WS with bubble sizes denoting Relative Humidity (RH).
 
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
-
-### Contact
-For any questions or additional information please contact Endekalu.simon.haile@gmail.com
