@@ -74,16 +74,27 @@ def analyze_dataset(df, z_threshold = 3.5):
     cleaning_applied = df[df['Cleaning'] == 1]
     cleaning_not_applied = df[df['Cleaning'] == 0]
     
-    # Plot the impact of cleaning on ModA and ModB overtime
+    # Plot the impact of cleaning on ModA overtime
     plt.figure(figsize = (14, 6))
     plt.plot(cleaning_applied['Timestamp'], cleaning_applied['ModA'], label = 'ModA (Cleaning applied)', color ="blue")
     plt.plot(cleaning_not_applied['Timestamp'], cleaning_not_applied['ModA'], label = 'ModA (Cleaning not applied)', color = "cyan", linestyle = '--')
     plt.xlabel('Timestamp')
     plt.ylabel('Sensor reading')
-    plt.title('Impact of cleaning on sensor reading (ModA and ModB) over time')
+    plt.title('Impact of cleaning on sensor reading ModA over time')
     plt.legend()
     plt.grid(True)
-    plt.show
+    plt.show()
+
+    # Plot the impact of cleaning on ModB overtime
+    plt.figure(figsize = (14, 6))
+    plt.plot(cleaning_applied['Timestamp'], cleaning_applied['ModB'], label = 'ModB (Cleaning applied)', color ="blue")
+    plt.plot(cleaning_not_applied['Timestamp'], cleaning_not_applied['ModB'], label = 'ModB (Cleaning not applied)', color = "cyan", linestyle = '--')
+    plt.xlabel('Timestamp')
+    plt.ylabel('Sensor reading')
+    plt.title('Impact of cleaning on sensor reading ModB over time')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
     # Correlation analysis for TOGO dataset
     df_corr = df.drop(columns = ['Timestamp', 'Year', 'Month', 'Day', 'Hour'])
